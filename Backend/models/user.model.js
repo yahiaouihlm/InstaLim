@@ -59,11 +59,12 @@ const userSchema = new mongoose.Schema(
 userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
+    next();
 });
 
 
 
-
+// création  d'un objet utlisateur avec plein de données 
 const UserModel = mongoose.model('user', userSchema);
 module.exports = UserModel;
 
