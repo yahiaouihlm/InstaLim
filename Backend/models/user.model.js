@@ -1,3 +1,5 @@
+
+// Model de base de données 
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
@@ -55,7 +57,7 @@ const userSchema = new mongoose.Schema(
 
 
 
-// cryptage de modpasse 
+// cryptage de mot de  passe 
 userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
@@ -63,6 +65,7 @@ userSchema.pre("save", async function (next) {
 });
 
 
+// decryptage de mot de passe pour la phase de authentification 
 userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email });
     if (user) {
