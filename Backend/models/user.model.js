@@ -18,6 +18,7 @@ const userSchema = new mongoose.Schema(
             require: true,
             validate: [isEmail],
             lowercase: true,
+            unique: true,
             trim: true,
         },
 
@@ -25,7 +26,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             require: true,
             max: 1024,
-            min: 6
+            minlength: 6
         },
         picture: {
             type: String,

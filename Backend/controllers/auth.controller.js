@@ -2,6 +2,7 @@ const UserModel = require('../models/user.model');
 const jwt = require('jsonwebtoken');
 //require('dotenv').config({ path: './config/.env' });
 const { create } = require('../models/user.model');
+const { signUpErrors, signInErrors } = require('../utils/errors.utils');
 
 const maxAge = 2 * 24 * 60 * 60 * 1000;
 
@@ -28,7 +29,9 @@ module.exports.signUp = async (req, res) => {
         res.status(201).json({ user: user._id });
     }
     catch (err) {
-        res.status(200).send({ err })
+
+        const errors = signUpErrors(err)
+        res.status(200).send({ errors });
     }
 }
 
@@ -49,7 +52,8 @@ module.exports.signIn = async (req, res) => {
         res.cookie('jwt', token, { httpOnly: true, maxAge });
         res.status(200).json({ user: user._id });
     } catch (error) {
-        res.status(200).json(error);
+        const errors = signInErrors(error);
+        res.status(200).json({ errors });
     }
 }
 
