@@ -6,7 +6,7 @@ require("./config/db");
 const app = express();
 
 
-
+// perser les informations  qui viennent depuis le  client en  mode json
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 

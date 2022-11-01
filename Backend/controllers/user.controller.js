@@ -21,6 +21,7 @@ module.exports.userInfo = (req, res) => {
 
 };
 
+//  mettre à  jour les inforamtion de utilisateur 
 
 module.exports.updateUser = async (req, res) => {
 
@@ -49,6 +50,7 @@ module.exports.updateUser = async (req, res) => {
 };
 
 
+// suppression  d'un utilisateur 
 module.exports.deleteUser = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
         return res.status(400).send('Unknown : ' + req.params.id)
@@ -63,6 +65,8 @@ module.exports.deleteUser = async (req, res) => {
 }
 
 
+// lorsque un utlisateur follow un  autre --> ajouter à la liste des follower 
+//                                        --> ajouter à  la liste des following 
 module.exports.follow = async (req, res) => {
 
     if (!ObjectID.isValid(req.params.id) || !ObjectID.isValid(req.body.idToFollow))

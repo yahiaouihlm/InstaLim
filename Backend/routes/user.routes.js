@@ -8,6 +8,8 @@ router.post("/login", authController.signIn);
 router.get("/logout", authController.logout);
 
 
+
+// créations  des utlisateur ,  gestion des follow ,  unfollow  , suppression  des utilisateurs  
 router.get("/", userController.getAllUsers);
 router.get('/:id', userController.userInfo);
 router.put("/:id", userController.updateUser);
