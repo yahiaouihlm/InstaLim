@@ -99,6 +99,49 @@ module.exports.follow = async (req, res) => {
 
     }
 
+
+    // try {
+    //     await UserModel.findByIdAndUpdate(
+    //         req.params.id,
+    //         { $addToSet: { following: req.body.idToFollow } },
+    //         { new: true, upser: true },
+    //         (err, docs) => {
+    //             console.log("toto");
+    //             if (err) res.status(400).json(err);
+    //             if (!err) {
+    //                  UserModel.findByIdAndUpdate(
+    //                     req.body.idToFollow,
+    //                     { $addToSet: { followers: req.params.id } },
+    //                     { new: true, upser: true },
+    //                     (err, docs) => {
+    //                         //     console.log(docs);
+    //                         //     //        if (!err) res.status(201).json(docs);
+    //                         if (!err) res.status(201).json(docs);
+    //                         if (err) res.status(400).json(err);
+    //                     }
+    //                 );
+    //                 res.status(201).json(docs);
+    //             }
+    //         }
+    //     );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 module.exports.unfollow = async (req, res) => {
